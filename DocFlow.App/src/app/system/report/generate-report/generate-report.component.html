@@ -1,0 +1,13 @@
+<div *ngIf="!isLoaded || !isUpdated">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="isLoaded">
+  <div class="card report">
+    <div class="card-header">
+      {{reportType.name}}
+    </div>
+    <div class="card-body">
+      <app-update-report-values [values]="reportValueList" (submitClicked)="createReport($event)"></app-update-report-values>
+    </div>
+  </div>
+  </div>

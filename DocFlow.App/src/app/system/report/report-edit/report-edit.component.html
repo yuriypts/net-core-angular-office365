@@ -1,0 +1,24 @@
+<div *ngIf="!isLoaded || !isUpdated">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="isLoaded">
+  <div class="action-block">
+      <a [routerLink]="['/reports']">
+        <button class="btn btn-outline-primary go-back">Go Back</button>
+      </a>
+      <button class="btn btn-outline-success" *ngIf="isView" (click)="getHistory()">History</button>
+  </div>
+ 
+  <div class="card report">
+    <div class="card-header">
+      {{report.name}}
+    </div>
+    <div class="card-body">
+      <app-update-report-values [values]="reportValueList" [isView]="isView" submitTitle="Update Report"
+        (submitClicked)="updateReport($event)"></app-update-report-values>
+    </div>
+  </div>
+</div>
+<div *ngIf="showHistory" class="history">
+  <app-history [historyList]="historyList" (closeEvent)="showHistory=false"></app-history>
+</div>

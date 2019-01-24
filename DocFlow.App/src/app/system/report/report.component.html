@@ -1,0 +1,29 @@
+<div *ngIf="!isLoaded">
+    <app-loader></app-loader>
+</div>
+<div  class="alert alert-{{ message.type }}" *ngIf="message.text">
+  {{ message.text }}
+</div>
+<div *ngIf="isLoaded">
+    <div class="card">
+        <div class="card-header">
+          General
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="control-label" for="reportType">Choose Template</label>
+            <select class="form-control" [(ngModel)]="reportTypeId" (change)="setReportType()">
+              <option *ngFor="let r of reportTypeList" [value]="r.id">
+                {{r.name}}
+              </option>
+            </select>
+          </div>
+          <div>
+              <button [disabled]="showReport" class="btn btn-primary" (click)="showReport=true;">Get Report</button>
+          </div>
+        </div>
+    </div>
+    <div *ngIf="showReport">
+        <app-generate-report [reportType]="selectedReportType"></app-generate-report>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">DocFlow</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+              <a class="nav-item nav-link" routerLinkActive="active"  [routerLink]="['/report']">Create Report</a>
+              <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/reports']">View Reports</a>
+              <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/drives']">Drives</a>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success form-inline" (click)="logout()">Logout</button>
+    </div>
+  </nav>

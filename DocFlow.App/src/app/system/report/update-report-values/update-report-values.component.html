@@ -1,0 +1,21 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="row">
+        <div class="form-group col-md-6" *ngFor="let item of values">
+            <div>{{item.name}}</div>
+            <input 
+              [type]="getType(item.type)" 
+              [readonly]="isView"
+              [ngClass]="{'form-control': getType(item.type)!=='checkbox'}" required 
+              #item.id="ngModel" [name]="item.id"
+              [(ngModel)]="item.value"
+            >
+            <span class="form-help-text" *ngIf="(f.controls[item.id] && f.controls[item.id].invalid && f.controls[item.id].touched)">
+              <span *ngIf="f.controls[item.id].errors.required">{{item.name}} is Required</span>
+            </span>
+          </div>
+    </div>
+
+    <div class="form-group" *ngIf="!isView">
+      <button [disabled]="f.invalid" type="submit" class="btn btn-success">{{submitTitle}}</button>
+    </div>
+  </form>

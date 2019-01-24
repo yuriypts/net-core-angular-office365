@@ -1,0 +1,18 @@
+.spinner{
+    background:rgba(255,255,255,0.5);
+    position: fixed;
+    top:0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+    .fa-spinner{
+        font-size: 50px;
+        color:#007BFF;
+        position: absolute;
+        left: 50%;
+        margin-left: -50px;
+        top: 50%;
+        margin-top: -50px;
+    }
+}

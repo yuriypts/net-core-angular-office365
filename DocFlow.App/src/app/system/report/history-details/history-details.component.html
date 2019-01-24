@@ -1,0 +1,18 @@
+<div *ngIf="!isLoaded">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="isLoaded">
+  <div class="action-block">
+      <a [routerLink]="['/report', historyValueList.reportId]">
+        <button class="btn btn-outline-primary go-back">Go Back</button>
+      </a>
+  </div>
+  <div class="card report">
+    <div class="card-header">
+      {{historyValueList.reportName}} - <b>History {{historyValueList.createDate | date:'short'}}</b> 
+    </div>
+    <div class="card-body">
+      <app-update-report-values [values]="reportValueList" [isView]="true"></app-update-report-values>
+    </div>
+  </div>
+</div>

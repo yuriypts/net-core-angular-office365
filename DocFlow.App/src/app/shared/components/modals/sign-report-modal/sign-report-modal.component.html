@@ -1,0 +1,24 @@
+<div *ngIf="isLoading">
+    <app-loader></app-loader>
+  </div>
+<div>
+  <form [formGroup]="form">
+    <div class="form-group" [ngClass]="{'has-error': form.get('location').invalid && form.get('location').touched}">
+      <h5>Enter Location</h5>
+      <input type="text" class="form-control" id="location" placeholder="location" formControlName="location">
+      <span class="form-help-text" *ngIf="form.get('location').invalid && form.get('location').touched">
+        <span *ngIf="form.get('location')['errors']['required']">Required</span>
+      </span>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': form.get('reason').invalid && form.get('reason').touched}">
+      <h5>Enter Reason</h5>
+      <input type="text" class="form-control" id="reason" placeholder="reason" formControlName="reason">
+      <span class="form-help-text" *ngIf="form.get('reason').invalid && form.get('reason').touched">
+        <span *ngIf="form.get('reason')['errors']['required']">Required</span>
+      </span>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmit(form)">Sign</button>
+    </div>
+  </form>
+</div>

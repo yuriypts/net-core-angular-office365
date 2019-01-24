@@ -1,0 +1,38 @@
+<div *ngIf="!isLoaded || !isDownload">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="isLoaded">
+  <app-modal [isOpen]="isOpenModal" title="Sign Report" [type]="modalType" [data]="selectedReportId" (hideEvent)="hideSignReportModal()"></app-modal>
+
+  <div *ngIf="isReports">You have no reports. You may 
+    <a [routerLink]="['/report']">Generate new report</a> </div>
+  <div class="container" *ngIf="!isReports">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Is Signed</th>
+          <th>Signer</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let report of model">
+          <td>{{ report.name }}</td>
+          <td>{{ report.isSigned }}</td>
+          <td>{{ report.signerUser.firstName + ' ' +  report.signerUser.lastName}}</td>
+          <td class="actions">
+              <a [routerLink]="['/report', report.id]">
+                <button class="btn btn-outline-success">View</button>
+              </a>
+              <a *ngIf="!report.isSigned" [routerLink]="['/report', report.id,'edit']">
+                <button class="btn btn-outline-warning">Edit</button>
+              </a>
+              <button *ngIf="!report.isSigned" class="btn btn-outline-primary" (click)="downloadReport(report.id)">Preview</button>
+              <button *ngIf="!report.isSigned" class="btn btn-outline-danger" (click)="openSignReportModal(report.id)">Sign</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

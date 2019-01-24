@@ -1,0 +1,31 @@
+<div *ngIf="!isLoaded">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="isLoaded">
+    <h4 class="drives-components-h4">Signed Documents</h4>
+
+    <div class="container">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Content Type</th>
+                <th>Created</th>
+                <th>Signer</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of model">
+                <td>{{ item.fields.ContentType }}</td>
+                <td>{{ item.fields.Created  | date: 'MM/dd/yyyy' }}</td>
+                <td>{{ item.createdBy.user.displayName }}</td>
+                <td class="actions">
+                    <a [href]="item.webUrl" target="_blank">
+                        <button class="btn btn-outline-primary">Open Document</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
