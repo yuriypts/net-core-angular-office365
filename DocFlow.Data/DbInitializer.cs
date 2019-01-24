@@ -16,11 +16,7 @@ namespace DocFlow.Data
 
             if (!context.Users.Any())
             {
-                var users = new User[] {
-                new User{UserName = "admin@DocFlowUSA.onmicrosoft.com", FirstName="Admin", LastName="Admin"},
-                new User{UserName = "oksana.Paramzin@DocFlowUSA.onmicrosoft.com", FirstName="Oksana", LastName="Paramzin"},
-                new User{UserName = "yuriy@DocFlowUSA.onmicrosoft.com", FirstName="Yuriy", LastName="Parashynets"},
-                 };
+                var users = new User[] { new User{UserName = "admin@DocFlowUSA.onmicrosoft.com", FirstName="Admin", LastName="Admin"} };
                 foreach (User item in users)
                 {
                     context.Users.Add(item);
